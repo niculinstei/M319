@@ -1,6 +1,7 @@
 package ch.niculin;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class SerieD {
     public static void main(String[] args) {
@@ -15,22 +16,42 @@ public class SerieD {
         Zahl2 = 1 + generator.nextInt(100);
         System.out.println("Zahl2: " + Zahl2);
 
-        System.out.println("Was möchtest du mit diesen Zahlen machen?  \n / Gebe eine 1 ein. \n % Gebe eine 2 ein.");
-        double x = new java.util.Scanner(System.in).nextDouble();
-        Division(Zahl1, Zahl2, x);
-        Modulo(Zahl1, Zahl2, x);
+
+
+
+        while (true) {
+            System.out.println("Was möchtest du mit diesen Zahlen machen? / oder %");
+            String x = new java.util.Scanner(System.in).next();
+
+
+
+            if (x.equals("/")) {
+                Division(Zahl1, Zahl2, x);
+            }
+            if (x.equals("%")){
+                Modulo(Zahl1, Zahl2, x);
+            }
+            System.out.println("Möchtest du nochmal? Ja oder Nein");
+            String eingabeJaNein = new Scanner(System.in).next();
+            if (eingabeJaNein.equals("Nein")){
+
+                System.out.println("Okay goodbye!");
+                break;
+            }
+        }
+
+
 
     }
 
-    private static void Modulo(double zahl1, double zahl2, double x) {
-        if (x == 2) {
+    private static void Modulo(double zahl1, double zahl2, String x) {
+
             System.out.println(zahl1 % zahl2);
-        }
+
     }
 
-    private static void Division(double zahl1, double zahl2, double x) {
-        if (x == 1) {
+    private static void Division(double zahl1, double zahl2, String x) {
+
             System.out.println(zahl1 / zahl2);
-        }
     }
 }
